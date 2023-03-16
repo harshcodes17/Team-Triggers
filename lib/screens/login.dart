@@ -66,34 +66,13 @@ class _MyLoginState extends State<MyLogin> {
                   SizedBox(
                     height: 20,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(25.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Text(
-                          'Login',
-                          style: TextStyle(
-                            color: Colors.blue.shade900,
-                            fontSize: 35.0,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 25),
-                          child: IconButton(
-                            onPressed: () {
-                              Navigator.pushNamed(context, 'home');
-                            },
-                            icon: Icon(
-                              Icons.arrow_circle_right,
-                              size: 70,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  IconButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, 'home');
+                    },
+                    icon: Icon(Icons.arrow_circle_right_rounded),
+                    iconSize: 70,
+                  )
                 ],
               ),
             ),
