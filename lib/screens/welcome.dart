@@ -22,6 +22,14 @@ class _WelcomePageState extends State<WelcomePage> {
         backgroundColor: Colors.transparent,
         body: Stack(
           children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 70, top: 220),
+              child: Icon(
+                Icons.person,
+                size: 200,
+                color: Colors.lightBlueAccent,
+              ),
+            ),
             SingleChildScrollView(
               child: Container(
                 width: 700,
@@ -40,63 +48,56 @@ class _WelcomePageState extends State<WelcomePage> {
                 ),
               ),
             ),
-            // SingleChildScrollView(
-            //   child: Container(
-            //     padding: EdgeInsets.only(
-            //       left: 25,
-            //       top: MediaQuery.of(context).size.height * 0.5,
-            //       right: 25,
-            //     ),
-            //     child: Column(
-            //       children: [
-            //         TextField(
-            //           decoration: InputDecoration(
-            //             fillColor: Colors.blue.shade100,
-            //             filled: true,
-            //             hintText: 'Email',
-            //             border: OutlineInputBorder(
-            //               borderRadius: BorderRadius.circular(10),
-            //             ),
-            //           ),
-            //         ),
-            //         SizedBox(
-            //           height: 20,
-            //         ),
-            //         TextField(
-            //           decoration: InputDecoration(
-            //             fillColor: Colors.blue.shade100,
-            //             filled: true,
-            //             hintText: 'Password',
-            //             border: OutlineInputBorder(
-            //               borderRadius: BorderRadius.circular(10),
-            //             ),
-            //           ),
-            //         ),
-            //       ],
-            //     ),
-            //   ),
-            // )
             Padding(
-              padding: const EdgeInsets.only(left: 98.0, top: 400),
-              child: Row(
-                children: [
-                  SizedBox(
-                    width: 90,
-                    height: 35,
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      child: Text(
-                        'Log in',
-                        style: TextStyle(
-                          fontSize: 20,
+              padding: const EdgeInsets.only(left: 90.0, top: 400, right: 20),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 8.0, right: 8, top: 50),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      width: 150,
+                      height: 55,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, 'login');
+                        },
+                        child: Text(
+                          'Log in',
+                          style: TextStyle(
+                            fontSize: 25,
+                          ),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.blue.shade300,
                         ),
                       ),
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.blue.shade300,
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    SizedBox(
+                      width: 150,
+                      height: 55,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 8.0, right: 10),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, 'register');
+                          },
+                          child: Text(
+                            'Sign Up',
+                            style: TextStyle(
+                              fontSize: 25,
+                            ),
+                          ),
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.blue.shade300,
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             )
           ],
