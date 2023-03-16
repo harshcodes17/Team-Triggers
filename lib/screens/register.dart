@@ -97,7 +97,9 @@ class _MyRegisterState extends State<MyRegister> {
                             backgroundColor: Colors.blue,
                             child: IconButton(
                               color: Colors.white,
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.pushNamed(context, 'home');
+                              },
                               icon: Icon(Icons.arrow_forward_outlined),
                             ),
                           )
