@@ -1,13 +1,18 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:student_facilitation/screens/home.dart';
 
 class MyLogin extends StatefulWidget {
-  const MyLogin({Key? key}) : super(key: key);
+  static const String id = 'MyLogin';
 
   @override
   State<MyLogin> createState() => _MyLoginState();
 }
 
 class _MyLoginState extends State<MyLogin> {
+  final _auth = FirebaseAuth.instance;
+  late String email;
+  late String password;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -40,6 +45,9 @@ class _MyLoginState extends State<MyLogin> {
                     ),
                   ),
                   TextField(
+                    onChanged: (value) {
+                      email = value;
+                    },
                     cursorColor: Colors.blue.shade800,
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
@@ -52,6 +60,9 @@ class _MyLoginState extends State<MyLogin> {
                   ),
                   SizedBox(height: 30),
                   TextField(
+                    onChanged: (value) {
+                      password = value;
+                    },
                     cursorColor: Colors.blue.shade900,
                     obscureText: true,
                     keyboardType: TextInputType.visiblePassword,
@@ -67,8 +78,16 @@ class _MyLoginState extends State<MyLogin> {
                     height: 20,
                   ),
                   IconButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, 'home');
+                    onPressed: () async {
+                      try {
+                        final user = await _auth.signInWithEmailAndPassword(
+                            email: email, password: password);
+                        if (user != null) {
+                          Navigator.pushNamed(context, HomePage.id);
+                        }
+                      } catch (e) {
+                        print(e);
+                      }
                     },
                     icon: Icon(Icons.arrow_circle_right_rounded),
                     iconSize: 70,

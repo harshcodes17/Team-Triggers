@@ -1,13 +1,18 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:student_facilitation/screens/home.dart';
 
 class MyRegister extends StatefulWidget {
-  const MyRegister({Key? key}) : super(key: key);
+  static const String id = 'MyRegister';
 
   @override
   State<MyRegister> createState() => _MyRegisterState();
 }
 
 class _MyRegisterState extends State<MyRegister> {
+  final _auth = FirebaseAuth.instance;
+  late String email;
+  late String password;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -44,6 +49,9 @@ class _MyRegisterState extends State<MyRegister> {
                 child: Column(
                   children: [
                     TextField(
+                      onChanged: (value) {
+                        email = value;
+                      },
                       decoration: InputDecoration(
                           fillColor: Colors.grey.shade300,
                           filled: true,
@@ -55,6 +63,9 @@ class _MyRegisterState extends State<MyRegister> {
                       height: 30,
                     ),
                     TextField(
+                      onChanged: (value) {
+                        password = value;
+                      },
                       obscureText: true,
                       decoration: InputDecoration(
                           fillColor: Colors.grey.shade300,
@@ -97,7 +108,18 @@ class _MyRegisterState extends State<MyRegister> {
                             backgroundColor: Colors.blue,
                             child: IconButton(
                               color: Colors.white,
-                              onPressed: () {},
+                              onPressed: () async {
+                                try {
+                                  final newuser = await _auth
+                                      .createUserWithEmailAndPassword(
+                                          email: email, password: password);
+                                  if (newuser != null) {
+                                    Navigator.pushNamed(context, HomePage.id);
+                                  }
+                                } catch (e) {
+                                  print(e);
+                                }
+                              },
                               icon: Icon(Icons.arrow_forward_outlined),
                             ),
                           )

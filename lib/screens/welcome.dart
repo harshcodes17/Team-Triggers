@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:student_facilitation/screens/login.dart';
+import 'package:student_facilitation/screens/register.dart';
 
 class WelcomePage extends StatefulWidget {
-  const WelcomePage({Key? key}) : super(key: key);
+  static const String id = 'WelcomePage';
 
   @override
   State<WelcomePage> createState() => _WelcomePageState();
@@ -59,7 +61,7 @@ class _WelcomePageState extends State<WelcomePage> {
                       height: 55,
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, 'login');
+                          Navigator.pushNamed(context, MyLogin.id);
                         },
                         child: Text(
                           'Log in',
@@ -82,7 +84,7 @@ class _WelcomePageState extends State<WelcomePage> {
                         padding: const EdgeInsets.only(left: 8.0, right: 10),
                         child: ElevatedButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, 'register');
+                            Navigator.pushNamed(context, MyRegister.id);
                           },
                           child: Text(
                             'Sign Up',
