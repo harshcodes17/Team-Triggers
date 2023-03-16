@@ -1,58 +1,92 @@
 import 'package:flutter/material.dart';
+import 'package:student_facilitation/screens/home.dart';
 
-void main() => runApp(MaterialApp(home: Profile()));
-
-class Profile extends StatefulWidget {
+class Profile extends StatelessWidget {
   static const String id = 'Profile';
   const Profile({Key? key}) : super(key: key);
 
   @override
-  State<Profile> createState() => _ProfileState();
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'My Profile',
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: MyProfile(),
+    );
+  }
 }
 
-class _ProfileState extends State<Profile> {
+class MyProfile extends StatefulWidget {
+  const MyProfile({Key? key}) : super(key: key);
+
+  @override
+  State<MyProfile> createState() => _MyProfileState();
+}
+
+class _MyProfileState extends State<MyProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Students FAcilities',
-          style: TextStyle(
-              fontSize: 20.0, fontWeight: FontWeight.bold, letterSpacing: 2.0),
+          'My Profile',
         ),
-      ),
-      body: Center(
-        child: Container(
-          width: 300,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TextField(
-                decoration: InputDecoration(
-                    hintText: 'ved123',
-                    labelText: 'username',
-                    border: OutlineInputBorder()),
-              ),
-              Container(
-                height: 20,
-              ),
-              TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                    labelText: 'password', border: OutlineInputBorder()),
-              ),
-              Container(
-                height: 20,
-              ),
-              TextField(
-                decoration: InputDecoration(
-                    hintText: 'abc@gmail.com',
-                    labelText: 'Email Id',
-                    border: OutlineInputBorder()),
-              )
-            ],
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.white,
           ),
+          onPressed: () {
+            Navigator.pushNamed(context, HomePage.id);
+          },
         ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.settings,
+              color: Colors.white,
+            ),
+          ),
+        ],
+      ),
+      body: Container(
+        padding: EdgeInsets.only(left: 15, top: 20, right: 15),
+        child: GestureDetector(
+            onTap: () {
+              FocusScope.of(context).unfocus();
+            },
+            child: ListView(
+              children: [
+                Center(
+                  child: Stack(
+                    children: [
+                      Container(
+                        width: 130,
+                        height: 130,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            width: 4,
+                            color: Colors.white,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                                spreadRadius: 2,
+                                blurRadius: 10,
+                                color: Colors.black.withOpacity(0.1))
+                          ],
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: NetworkImage(
+                                'https://cdn.pixabay.com/photo/2015/07/17/22/43/student-849826__480.jpg'),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                )
+              ],
+            )),
       ),
     );
   }

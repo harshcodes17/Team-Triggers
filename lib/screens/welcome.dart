@@ -25,7 +25,7 @@ class _WelcomePageState extends State<WelcomePage> {
         body: Stack(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 70, top: 220),
+              padding: const EdgeInsets.only(left: 70, top: 280),
               child: Icon(
                 Icons.person,
                 size: 200,
@@ -51,12 +51,12 @@ class _WelcomePageState extends State<WelcomePage> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 90.0, top: 400, right: 20),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 8.0, right: 8, top: 50),
-                child: Column(
-                  children: [
-                    SizedBox(
+              padding: const EdgeInsets.only(left: 10.0, top: 500, right: 20),
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0, right: 10),
+                    child: SizedBox(
                       width: 150,
                       height: 55,
                       child: ElevatedButton(
@@ -74,32 +74,32 @@ class _WelcomePageState extends State<WelcomePage> {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    SizedBox(
-                      width: 150,
-                      height: 55,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 8.0, right: 10),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.pushNamed(context, MyRegister.id);
-                          },
-                          child: Text(
-                            'Sign Up',
-                            style: TextStyle(
-                              fontSize: 25,
-                            ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  SizedBox(
+                    width: 150,
+                    height: 55,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 8.0, right: 10),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, MyRegister.id);
+                        },
+                        child: Text(
+                          'Sign Up',
+                          style: TextStyle(
+                            fontSize: 25,
                           ),
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.blue.shade300,
-                          ),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.blue.shade300,
                         ),
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             )
           ],
