@@ -40,7 +40,7 @@ class _WelcomePageState extends State<WelcomePage> {
                     'Welcome Student!',
                     style: TextStyle(
                       fontSize: 38,
-                      color: Colors.blue.shade300,
+                      color: Colors.blue.shade900,
                       fontFamily: 'Pacifico',
                       fontWeight: FontWeight.bold,
                     ),
