@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:student_facilitation/screens/home.dart';
 import 'package:student_facilitation/screens/login.dart';
+import 'package:student_facilitation/screens/profile.dart';
 import 'package:student_facilitation/screens/register.dart';
 import 'package:student_facilitation/screens/welcome.dart';
 
@@ -27,6 +28,7 @@ class Dashboard extends StatelessWidget {
         MyLogin.id: (context) => MyLogin(),
         MyRegister.id: (context) => MyRegister(),
         HomePage.id: (context) => HomePage(),
+        Profile.id: (context) => Profile(),
       },
     );
   }

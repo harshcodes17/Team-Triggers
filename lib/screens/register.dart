@@ -49,13 +49,16 @@ class _MyRegisterState extends State<MyRegister> {
                 child: Column(
                   children: [
                     TextField(
+                      style: TextStyle(color: Colors.blue.shade600),
                       onChanged: (value) {
                         email = value;
                       },
                       decoration: InputDecoration(
-                          fillColor: Colors.grey.shade300,
+                          icon: Icon(Icons.mail),
+                          fillColor: Colors.grey.shade200,
                           filled: true,
                           hintText: 'Email',
+                          hintStyle: TextStyle(color: Colors.blue.shade800),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10))),
                     ),
@@ -63,14 +66,17 @@ class _MyRegisterState extends State<MyRegister> {
                       height: 30,
                     ),
                     TextField(
+                      style: TextStyle(color: Colors.blue.shade600),
                       onChanged: (value) {
                         password = value;
                       },
                       obscureText: true,
                       decoration: InputDecoration(
+                          icon: Icon(Icons.lock),
                           fillColor: Colors.grey.shade300,
                           filled: true,
                           hintText: 'Password',
+                          hintStyle: TextStyle(color: Colors.blue.shade800),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10))),
                     ),
@@ -78,11 +84,14 @@ class _MyRegisterState extends State<MyRegister> {
                       height: 30,
                     ),
                     TextField(
+                      style: TextStyle(color: Colors.blue.shade600),
                       keyboardType: TextInputType.phone,
                       decoration: InputDecoration(
+                          icon: Icon(Icons.phone),
                           fillColor: Colors.grey.shade300,
                           filled: true,
                           hintText: 'Phone Number',
+                          hintStyle: TextStyle(color: Colors.blue.shade800),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10))),
                     ),
