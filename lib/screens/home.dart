@@ -1,5 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:student_facilitation/screens/welcome.dart';
+import 'package:student_facilitation/screens/services/post.dart';
+
+final _firestore = FirebaseFirestore.instance;
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -9,6 +14,43 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final messageTextController = TextEditingController();
+  final _auth = FirebaseAuth.instance;
+  late Firebase loggedInuser;
+
+  late String messageText;
+
+  @override
+  void initState() {
+    super.initState();
+    getCurrentUser();
+  }
+
+  void getCurrentUser() async {
+    try {
+      final user = await _auth.currentUser!;
+      if (user != null) {
+        loggedInuser = user as Firebase;
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  // void getProblems() async {
+  //   final messages = await _firestore.collection('problems').get();
+  //   for (var message in messages.docs) {
+  //     print(message.data());
+  //   }
+  // }
+  void messageStream() async {
+    await for (var snapshot in _firestore.collection('problems').snapshots()) {
+      for (var message in snapshot.docs) {
+        print(message.data());
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,6 +62,8 @@ class _HomePageState extends State<HomePage> {
         actions: [
           TextButton.icon(
             onPressed: () {
+              // getProblems();
+              // messageStream();
               Navigator.pushNamed(context, 'WelcomePage');
             },
             icon: Icon(Icons.person),
@@ -30,7 +74,9 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.white,
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, Post.id);
+        },
         child: Icon(
           color: Colors.blue.shade400,
           Icons.add,
@@ -97,7 +143,49 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            StreamBuilder<QuerySnapshot>(
+                stream: FirebaseFirestore.instance
+                    .collection('problems')
+                    .snapshots(),
+                builder: (context, snapshot) {
+                  List<Text> messageWidgets = [];
+                  if (snapshot.hasData) {
+                    final problems = snapshot.data?.docs;
+                    List<Text> problemWidgets = [];
+                    for (var problem in problems!) {
+                      // for (var problem in problems!) {
+                      //   final problemWidget = Row(
+                      //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      //     children: [
+                      //       Text(problem['text']),
+                      // Text(problem['email']),
+                      //   ],
+                      // );
+                      // problemWidgets.add(problemWidget);
+
+                      final messageText = problem['text'];
+                      final messageSender = problem['email'];
+                      final messageWidget =
+                          Text('$messageText from $messageSender');
+                      messageWidgets.add(messageWidget);
+                    }
+                  }
+                  return Expanded(
+                    child: Column(
+                      children: messageWidgets,
+                    ),
+                  );
+                }
+                // return Expanded(
+                //   child: ListView(
+                //     children: problemWidgets,
+                //   ),
+                // );
+
+                ),
             Row(
               children: [
                 Padding(

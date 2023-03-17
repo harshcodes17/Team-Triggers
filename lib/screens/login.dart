@@ -10,6 +10,7 @@ class MyLogin extends StatefulWidget {
 }
 
 class _MyLoginState extends State<MyLogin> {
+  bool showSpinner = false;
   final _auth = FirebaseAuth.instance;
   late String email;
   late String password;
@@ -32,90 +33,72 @@ class _MyLoginState extends State<MyLogin> {
           child: Scaffold(
             backgroundColor: Colors.transparent,
             body: SafeArea(
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Login',
-                      style: TextStyle(
-                        fontFamily: 'Pacifico',
-                        fontSize: 50,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.blue.shade900,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 70,
-                    ),
-                    TextField(
-                      style: TextStyle(color: Colors.blue.shade600),
-                      onChanged: (value) {
-                        email = value;
-                      },
-                      cursorColor: Colors.blue.shade800,
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
-                          icon: Icon(
-                            Icons.mail,
-                            size: 30,
-                          ),
-                          fillColor: Colors.transparent,
-                          filled: true,
-                          hintText: 'Email Address',
-                          hintStyle: TextStyle(color: Colors.blue.shade900),
-                          labelText: 'Enter your Email',
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10)),
-                          labelStyle: TextStyle(
-                            color: Colors.blueAccent,
-                          )),
-                    ),
-                    SizedBox(height: 30),
-                    TextField(
-                      onChanged: (value) {
-                        password = value;
-                      },
-                      cursorColor: Colors.blue.shade900,
-                      obscureText: true,
-                      keyboardType: TextInputType.visiblePassword,
-                      decoration: InputDecoration(
-                          icon: Icon(
-                            Icons.lock,
-                            size: 30,
-                          ),
-                          fillColor: Colors.transparent,
-                          filled: true,
-                          hintText: 'Password',
-                          hintStyle: TextStyle(color: Colors.blue.shade900),
-                          labelText: 'Enter your password',
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10)),
-                          labelStyle: TextStyle(
-                            color: Colors.blueAccent,
-                          )),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    IconButton(
-                      onPressed: () async {
-                        try {
-                          final user = await _auth.signInWithEmailAndPassword(
-                              email: email, password: password);
-                          if (user != null) {
-                            Navigator.pushNamed(context, HomePage.id);
-                          }
-                        } catch (e) {
-                          print(e);
-                        }
-                      },
-                      icon: Icon(Icons.arrow_circle_right_rounded),
-                      iconSize: 80,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Login',
+                    style: TextStyle(
+                      fontFamily: 'Pacifico',
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold,
                       color: Colors.blue.shade900,
-                    )
-                  ],
-                ),
+                    ),
+                  ),
+                  TextField(
+                    onChanged: (value) {
+                      email = value;
+                    },
+                    cursorColor: Colors.blue.shade800,
+                    keyboardType: TextInputType.emailAddress,
+                    decoration: InputDecoration(
+                        hintText: 'Email Address',
+                        hintStyle: TextStyle(color: Colors.white),
+                        labelText: 'Enter your Email',
+                        labelStyle: TextStyle(
+                          color: Colors.blueAccent,
+                        )),
+                  ),
+                  SizedBox(height: 30),
+                  TextField(
+                    onChanged: (value) {
+                      password = value;
+                    },
+                    cursorColor: Colors.blue.shade900,
+                    obscureText: true,
+                    keyboardType: TextInputType.visiblePassword,
+                    decoration: InputDecoration(
+                        icon: IconButton(
+                          color: Colors.black54,
+                          onPressed: () {},
+                          icon: Icon(Icons.remove_red_eye),
+                        ),
+                        hintText: 'Password',
+                        hintStyle: TextStyle(color: Colors.white),
+                        labelText: 'Enter your password',
+                        labelStyle: TextStyle(
+                          color: Colors.blueAccent,
+                        )),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  IconButton(
+                    onPressed: () async {
+                      try {
+                        final user = await _auth.signInWithEmailAndPassword(
+                            email: email, password: password);
+                        if (user != null) {
+                          Navigator.pushNamed(context, HomePage.id);
+                        }
+                      } catch (e) {
+                        print(e);
+                      }
+                    },
+                    icon: Icon(Icons.arrow_circle_right_rounded),
+                    iconSize: 70,
+                  )
+                ],
               ),
             ),
           ),

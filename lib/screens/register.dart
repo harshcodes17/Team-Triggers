@@ -11,8 +11,10 @@ class MyRegister extends StatefulWidget {
 
 class _MyRegisterState extends State<MyRegister> {
   final _auth = FirebaseAuth.instance;
+
   late String email;
   late String password;
+  late String name;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -48,6 +50,23 @@ class _MyRegisterState extends State<MyRegister> {
                 ),
                 child: Column(
                   children: [
+                    TextField(
+                      style: TextStyle(color: Colors.blue.shade600),
+                      onChanged: (value) {
+                        name = value;
+                      },
+                      decoration: InputDecoration(
+                          icon: Icon(Icons.person),
+                          fillColor: Colors.grey.shade200,
+                          filled: true,
+                          hintText: 'Email',
+                          hintStyle: TextStyle(color: Colors.blue.shade800),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10))),
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
                     TextField(
                       style: TextStyle(color: Colors.blue.shade600),
                       onChanged: (value) {

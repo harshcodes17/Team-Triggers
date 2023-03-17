@@ -5,6 +5,8 @@ import 'package:student_facilitation/screens/register.dart';
 class WelcomePage extends StatefulWidget {
   static const String id = 'WelcomePage';
 
+  const WelcomePage({super.key});
+
   @override
   State<WelcomePage> createState() => _WelcomePageState();
 }
@@ -25,7 +27,7 @@ class _WelcomePageState extends State<WelcomePage> {
         body: Stack(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 70, top: 280),
+              padding: const EdgeInsets.only(left: 70, top: 220),
               child: Icon(
                 Icons.person,
                 size: 200,
@@ -51,12 +53,12 @@ class _WelcomePageState extends State<WelcomePage> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 10.0, top: 500, right: 20),
-              child: Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8.0, right: 10),
-                    child: SizedBox(
+              padding: const EdgeInsets.only(left: 90.0, top: 400, right: 20),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 8.0, right: 8, top: 50),
+                child: Column(
+                  children: [
+                    SizedBox(
                       width: 150,
                       height: 55,
                       child: ElevatedButton(
@@ -70,36 +72,36 @@ class _WelcomePageState extends State<WelcomePage> {
                           ),
                         ),
                         style: ElevatedButton.styleFrom(
-                          primary: Colors.blue.shade300,
+                          backgroundColor: Colors.blue.shade300,
                         ),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  SizedBox(
-                    width: 150,
-                    height: 55,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 8.0, right: 10),
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, MyRegister.id);
-                        },
-                        child: Text(
-                          'Sign Up',
-                          style: TextStyle(
-                            fontSize: 25,
+                    SizedBox(
+                      height: 20,
+                    ),
+                    SizedBox(
+                      width: 150,
+                      height: 55,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 8.0, right: 10),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, MyRegister.id);
+                          },
+                          child: Text(
+                            'Sign Up',
+                            style: TextStyle(
+                              fontSize: 25,
+                            ),
+                          ),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.blue.shade300,
                           ),
                         ),
-                        style: ElevatedButton.styleFrom(
-                          primary: Colors.blue.shade300,
-                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             )
           ],

@@ -6,6 +6,7 @@ import 'package:student_facilitation/screens/lost.dart';
 import 'package:student_facilitation/screens/message.dart';
 import 'package:student_facilitation/screens/profile.dart';
 import 'package:student_facilitation/screens/register.dart';
+import 'package:student_facilitation/screens/services/post.dart';
 import 'package:student_facilitation/screens/trending.dart';
 import 'package:student_facilitation/screens/welcome.dart';
 
@@ -36,6 +37,7 @@ class Dashboard extends StatelessWidget {
         Trending.id: (context) => Trending(),
         Message.id: (context) => Message(),
         Lost.id: (context) => Lost(),
+        Post.id: (context) => Post(),
       },
     );
   }
