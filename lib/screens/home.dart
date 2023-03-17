@@ -217,8 +217,127 @@ class _HomePageState extends State<HomePage> {
                       color: Colors.white,
                     ),
                   ),
+                ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //   children: [
+                //     Container(
+                //       child: Image.asset(
+                //         'images/key.jpg',
+                //         height: 120,
+                //         width: 90,
+                //       ),
+                //     ),
+                //     Text(
+                //       'Found A Key Near Canteen Katta\nContact Me!',
+                //       style: TextStyle(
+                //         fontSize: 11,
+                //         color: Colors.white,
+                //         fontFamily: 'Source Sans Pro',
+                //         fontWeight: FontWeight.bold,
+                //       ),
+                //     ),
+                //     Icon(
+                //       Icons.upload_outlined,
+                //       color: Colors.blue.shade100,
+                //       size: 35,
+                //     )
+                //   ],
+                // ),
+                // Divider(
+                //   color: Colors.blue.shade100,
+                // ),
+              ],
+            ),
+            SizedBox(
+              height: 60,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  child: Image.asset(
+                    'images/libchairs.jpeg',
+                    height: 120,
+                    width: 90,
+                  ),
+                ),
+                Text(
+                  'Noisy Library Chairs\nRubber Bottoms Reccommended!',
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.white,
+                    fontFamily: 'Source Sans Pro',
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Icon(
+                  Icons.upload_outlined,
+                  color: Colors.blue.shade100,
+                  size: 35,
                 )
               ],
+            ),
+            Divider(
+              color: Colors.blue.shade100,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  child: Image.asset(
+                    'images/sewagef.jpeg',
+                    height: 120,
+                    width: 90,
+                  ),
+                ),
+                Text(
+                  'Bad Sewage System Near Mess\nRotning smell!',
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.white,
+                    fontFamily: 'Source Sans Pro',
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Icon(
+                  Icons.upload_outlined,
+                  color: Colors.blue.shade100,
+                  size: 35,
+                )
+              ],
+            ),
+            Divider(
+              color: Colors.blue.shade100,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  child: Image.asset(
+                    'images/wires.jpeg',
+                    height: 120,
+                    width: 90,
+                  ),
+                ),
+                Text(
+                  'Dangerous Live Wire Outings\nin Hostel D4',
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.white,
+                    fontFamily: 'Source Sans Pro',
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Icon(
+                  Icons.upload_outlined,
+                  color: Colors.blue.shade100,
+                  size: 35,
+                )
+              ],
+            ),
+            Divider(
+              color: Colors.blue.shade100,
             ),
           ],
         ),

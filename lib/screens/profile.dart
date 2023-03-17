@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:student_facilitation/screens/home.dart';
 
 class Profile extends StatelessWidget {
   static const String id = 'Profile';
@@ -36,7 +35,7 @@ class _MyProfileState extends State<MyProfile> {
             color: Colors.white,
           ),
           onPressed: () {
-            Navigator.pushNamed(context, HomePage.id);
+            Navigator.of(context, rootNavigator: true).pushNamed("HomePage");
           },
         ),
         actions: [

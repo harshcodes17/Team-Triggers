@@ -50,7 +50,39 @@ class _LostState extends State<Lost> {
                   ),
                 )
               ],
-            )
+            ),
+            SizedBox(
+              height: 60,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  child: Image.asset(
+                    'images/key.jpg',
+                    height: 120,
+                    width: 90,
+                  ),
+                ),
+                Text(
+                  'Found a Bikes Key\nNear Workshop! Contact.',
+                  style: TextStyle(
+                    fontSize: 17,
+                    color: Colors.white,
+                    fontFamily: 'Source Sans Pro',
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Icon(
+                  Icons.upload_outlined,
+                  color: Colors.blue.shade100,
+                  size: 35,
+                )
+              ],
+            ),
+            Divider(
+              color: Colors.blue.shade100,
+            ),
           ],
         ),
       ),

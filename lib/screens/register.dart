@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_signin_button/button_view.dart';
+import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:student_facilitation/screens/home.dart';
 
 class MyRegister extends StatefulWidget {
@@ -50,6 +52,19 @@ class _MyRegisterState extends State<MyRegister> {
                 ),
                 child: Column(
                   children: [
+                    SignInButton(
+                      Buttons.Google,
+                      text: "Sign up with Google",
+                      onPressed: () {},
+                    ),
+                    SignInButton(
+                      Buttons.Facebook,
+                      text: "Sign up with Facebook",
+                      onPressed: () {},
+                    ),
+                    Divider(
+                      color: Colors.black,
+                    ),
                     TextField(
                       style: TextStyle(color: Colors.blue.shade600),
                       onChanged: (value) {
@@ -73,8 +88,12 @@ class _MyRegisterState extends State<MyRegister> {
                         email = value;
                       },
                       decoration: InputDecoration(
-                          icon: Icon(Icons.mail),
-                          fillColor: Colors.grey.shade200,
+                          icon: Icon(
+                            Icons.mail,
+                            color: Colors.blueGrey,
+                            size: 30,
+                          ),
+                          fillColor: Colors.grey.shade300,
                           filled: true,
                           hintText: 'Email',
                           hintStyle: TextStyle(color: Colors.blue.shade800),
@@ -91,7 +110,11 @@ class _MyRegisterState extends State<MyRegister> {
                       },
                       obscureText: true,
                       decoration: InputDecoration(
-                          icon: Icon(Icons.lock),
+                          icon: Icon(
+                            Icons.lock,
+                            color: Colors.blueGrey,
+                            size: 30,
+                          ),
                           fillColor: Colors.grey.shade300,
                           filled: true,
                           hintText: 'Password',
@@ -106,7 +129,11 @@ class _MyRegisterState extends State<MyRegister> {
                       style: TextStyle(color: Colors.blue.shade600),
                       keyboardType: TextInputType.phone,
                       decoration: InputDecoration(
-                          icon: Icon(Icons.phone),
+                          icon: Icon(
+                            Icons.phone,
+                            color: Colors.blueGrey,
+                            size: 30,
+                          ),
                           fillColor: Colors.grey.shade300,
                           filled: true,
                           hintText: 'Phone Number',
@@ -122,42 +149,36 @@ class _MyRegisterState extends State<MyRegister> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            'Sign Up',
-                            style: TextStyle(
-                              color: Colors.blue.shade700,
-                              fontFamily: 'Source Sans Pro',
-                              fontWeight: FontWeight.bold,
-                              fontSize: 30,
+                          Padding(
+                            padding: const EdgeInsets.only(left: 118.0),
+                            child: CircleAvatar(
+                              radius: 30,
+                              backgroundColor: Colors.blue,
+                              child: IconButton(
+                                color: Colors.white,
+                                onPressed: () async {
+                                  try {
+                                    final newuser = await _auth
+                                        .createUserWithEmailAndPassword(
+                                            email: email, password: password);
+                                    if (newuser != null) {
+                                      Navigator.pushNamed(context, HomePage.id);
+                                    }
+                                  } catch (e) {
+                                    print(e);
+                                  }
+                                },
+                                icon: Icon(Icons.arrow_forward_outlined),
+                              ),
                             ),
                           ),
-                          CircleAvatar(
-                            radius: 30,
-                            backgroundColor: Colors.blue,
-                            child: IconButton(
-                              color: Colors.white,
-                              onPressed: () async {
-                                try {
-                                  final newuser = await _auth
-                                      .createUserWithEmailAndPassword(
-                                          email: email, password: password);
-                                  if (newuser != null) {
-                                    Navigator.pushNamed(context, HomePage.id);
-                                  }
-                                } catch (e) {
-                                  print(e);
-                                }
-                              },
-                              icon: Icon(Icons.arrow_forward_outlined),
-                            ),
-                          )
                         ],
                       ),
                     ),
                   ],
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
