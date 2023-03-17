@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:student_facilitation/screens/home.dart';
 
 class Post extends StatefulWidget {
   const Post({Key? key}) : super(key: key);
@@ -37,6 +38,7 @@ class _PostState extends State<Post> {
                   _firestore.collection('problems').add({
                     'text': problem,
                   });
+                  Navigator.pushNamed(context, 'HomePage');
                 },
                 child: Text('Post Problem'))
           ],

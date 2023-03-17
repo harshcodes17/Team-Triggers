@@ -74,7 +74,7 @@ class _MyRegisterState extends State<MyRegister> {
                           icon: Icon(Icons.person),
                           fillColor: Colors.grey.shade200,
                           filled: true,
-                          hintText: 'Email',
+                          hintText: 'Name',
                           hintStyle: TextStyle(color: Colors.blue.shade800),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10))),

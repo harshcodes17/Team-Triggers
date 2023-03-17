@@ -43,13 +43,13 @@ class _HomePageState extends State<HomePage> {
   //     print(message.data());
   //   }
   // }
-  // void messageStream() async {
-  //   await for (var snapshot in _firestore.collection('problems').snapshots()) {
-  //     for (var message in snapshot.docs) {
-  //       print(message.data());
-  //     }
-  //   }
-  // }
+  void messageStream() async {
+    await for (var snapshot in _firestore.collection('problems').snapshots()) {
+      for (var message in snapshot.docs) {
+        print(message.data());
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -167,9 +167,8 @@ class _HomePageState extends State<HomePage> {
                       // problemWidgets.add(problemWidget);
 
                       final messageText = problem['text'];
-                      final messageSender = problem['email'];
-                      final messageWidget =
-                          Text('$messageText from $messageSender');
+
+                      final messageWidget = Text('$messageText');
                       messageWidgets.add(messageWidget);
                     }
                   }
