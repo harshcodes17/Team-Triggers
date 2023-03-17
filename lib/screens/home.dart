@@ -43,13 +43,13 @@ class _HomePageState extends State<HomePage> {
   //     print(message.data());
   //   }
   // }
-  void messageStream() async {
-    await for (var snapshot in _firestore.collection('problems').snapshots()) {
-      for (var message in snapshot.docs) {
-        print(message.data());
-      }
-    }
-  }
+  // void messageStream() async {
+  //   await for (var snapshot in _firestore.collection('problems').snapshots()) {
+  //     for (var message in snapshot.docs) {
+  //       print(message.data());
+  //     }
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -121,16 +121,16 @@ class _HomePageState extends State<HomePage> {
                 thickness: 2,
                 color: Colors.grey,
               ),
-              ListTile(
-                title: Text('Message'),
-                onTap: () {
-                  Navigator.pushNamed(context, 'Message');
-                },
-              ),
-              Divider(
-                thickness: 2,
-                color: Colors.grey,
-              ),
+              // ListTile(
+              //   title: Text('Message'),
+              //   onTap: () {
+              //     Navigator.pushNamed(context, 'Message');
+              //   },
+              // ),
+              // Divider(
+              //   thickness: 2,
+              //   color: Colors.grey,
+              // ),
             ],
           ),
         ),
